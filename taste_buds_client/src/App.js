@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import SignInPage from './components/SignInPage';
 import RecipeIndexPage from './components/RecipeIndexPage';
 import RecipeShowPage from './components/RecipeShowPage';
+import NewRecipePage from './components/NewRecipePage';
 
 
 // function App() {
@@ -65,7 +66,8 @@ class App extends Component {
                 <Route exact path='/recipes'>
                     <RecipeIndexPage />
                 </Route>
-                <Route path='/recipes/:id' component={RecipeShowPage}></Route>
+                <Route exact path='/recipes/new' component={NewRecipePage}></Route>
+                <Route exact path='/recipes/:id' component={RecipeShowPage}></Route>
 
                 {/*
                 <AuthRoute
