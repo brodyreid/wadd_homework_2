@@ -1,25 +1,77 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { Session } from './requests';
+import { User } from './requests'
 import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import NavBar from './components/NavBar';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+// function App() {
+//   return (
+//     <div className='App'>
+//       <WelcomePage/>
+//     </div>
+//   )}
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      user: null
+    }
+  }
+
+  componentDidMount() {
+    Session.create({
+      email: 'js@winterfell.gov',
+      password: 'supersecret'
+    })
+    .then(current_user => {
+      this.setState((state) => {
+        return{
+          user: current_user
+        }
+      })
+    })
+  }
+
+  getCurrentUser = () => {
+    return User.current().then(user => {
+      if(user?.id){
+        this.setState(state => {
+          return { user }
+        })
+      }
+    })
+  }
+
+  onSignOut = () => {
+    this.setState({
+      user: null
+    })
+    }
+
+  render() {
+    return (
+        <BrowserRouter>
+            <NavBar currentUser={this.state.user} onSignOut={this.onSignOut}/> 
+            <Switch>
+                {/* <Route exact path="/sign_in" render={(routeProps) => <SignInPage {...routeProps} onSignIn={this.getCurrentUser}/>
+                <Route exact path='/sign_up' render={(routeProps) => <SignUpPage {...routeProps} onSignUp={this.getCurrentUser}/> 
+                <Route exact path='/questions'>
+                    <QuestionIndexPage />
+                </Route>
+                <AuthRoute
+                    isAuthenticated={!!this.state.user}
+                    exact path='/questions/new'
+                    component={NewQuestionPage}
+                />
+                <Route path='/questions/:id' component={QuestionShowPage}></Route>
+                <Route component={NotFoundPage} /> */}
+            </Switch>
+        </BrowserRouter>
+    )
+  }
 }
 
 export default App;
