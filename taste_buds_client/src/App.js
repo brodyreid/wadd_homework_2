@@ -8,6 +8,7 @@ import SignInPage from './components/SignInPage';
 import RecipeIndexPage from './components/RecipeIndexPage';
 import RecipeShowPage from './components/RecipeShowPage';
 import NewRecipePage from './components/NewRecipePage';
+import AuthRoute from './components/AuthRoute';
 
 
 class App extends Component {
@@ -59,16 +60,14 @@ class App extends Component {
                 <Route exact path='/recipes'>
                     <RecipeIndexPage />
                 </Route>
-                <Route exact path='/recipes/new' component={NewRecipePage}></Route>
-                <Route exact path='/recipes/:id' component={RecipeShowPage}></Route>
-
-                {/*
                 <AuthRoute
-                    isAuthenticated={!!this.state.user}
-                    exact path='/questions/new'
-                    component={NewQuestionPage}
+                    isAuthenticated={ !!this.state.user }
+                    exact path='/recipes/new'
+                    component={NewRecipePage}
                 />
-                <Route component={NotFoundPage} /> */}
+                {/* <Route exact path='/recipes/new' component={NewRecipePage}></Route> */}
+                <Route exact path='/recipes/:id' component={RecipeShowPage}></Route>
+                {/* <Route component={NotFoundPage} /> */}
             </Switch>
         </BrowserRouter>
     )
