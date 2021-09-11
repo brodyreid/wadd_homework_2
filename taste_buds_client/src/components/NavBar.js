@@ -20,7 +20,7 @@ const NavBar = ({ currentUser, onSignOut }) => {
             { currentUser ? (
                 <React.Fragment> 
                     <NavLink className="navBarLink btn btn-primary" to='/recipes/new'>New Recipe</NavLink>
-                    <span class="navBarLink" style={{marginTop: "12px"}}>Welcome, {currentUser.first_name}</span>
+                    <span className="navBarLink" style={{marginTop: "12px"}}>Welcome, {currentUser.first_name}</span>
                     <button className="navBarLink btn btn-primary" onClick={handleSignOut}>Sign Out</button>
                 </React.Fragment>
             ) : (

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Session } from './requests';
+// import { Session } from './requests';
 import { User } from './requests'
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -10,13 +10,6 @@ import RecipeShowPage from './components/RecipeShowPage';
 import NewRecipePage from './components/NewRecipePage';
 
 
-// function App() {
-//   return (
-//     <div className='App'>
-//       <WelcomePage/>
-//     </div>
-//   )}
-
 class App extends Component {
   constructor(props) {
     super(props)
@@ -26,18 +19,18 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // this.getCurrentUser()
-    Session.create({
-      email: 'js@winterfell.gov',
-      password: 'supersecret'
-    })
-    .then(current_user => {
-      this.setState((state) => {
-        return{
-          user: current_user
-        }
-      })
-    })
+    this.getCurrentUser()
+    // Session.create({
+    //   email: 'js@winterfell.gov',
+    //   password: 'supersecret'
+    // })
+    // .then(current_user => {
+    //   this.setState((state) => {
+    //     return{
+    //       user: current_user
+    //     }
+    //   })
+    // })
   }
 
   getCurrentUser = () => {

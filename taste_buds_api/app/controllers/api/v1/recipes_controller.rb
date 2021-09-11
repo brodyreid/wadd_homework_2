@@ -1,6 +1,6 @@
 class Api::V1::RecipesController < Api::ApplicationController
-    before_action :find_recipe, only: [:show, :destroy]
-    before_action :authenticate_user!, only: [:create, :destroy]
+    before_action :find_recipe, only: [:show, :destroy, :update]
+    before_action :authenticate_user!, only: [:create, :destroy, :update]
 
     def index
         recipes = Recipe.order(id: :desc)
@@ -20,6 +20,17 @@ class Api::V1::RecipesController < Api::ApplicationController
         else
             render(
                 json: { errors: recipe.errors.messages },
+                status: 422,
+            )
+        end
+    end
+
+    def update
+        if @recipe.update recipe_params
+            render json: { id: @recipe.id }
+        else
+            render(
+                json: { errors: @recipe.errors.messages },
                 status: 422,
             )
         end
