@@ -15012,3 +15012,11 @@ Processing by Api::V1::RecipesController#index as JSON
 Completed 200 OK in 130ms (Views: 97.4ms | ActiveRecord: 31.5ms | Allocations: 61639)
 
 
+Started GET "/api/v1/users/current" for ::1 at 2021-09-11 14:00:58 -0400
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:5:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.19ms)
+Completed 200 OK in 6ms (Views: 0.6ms | ActiveRecord: 1.3ms | Allocations: 966)
+
+
