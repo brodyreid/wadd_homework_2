@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import RecipeDetails from './RecipeDetails';
-// import ReviewList from './ReviewList';
-// import RecipeData from '../RecipeData';
+import ReviewList from './ReviewList';
 import { Recipe } from '../requests';
 
 
@@ -50,11 +49,12 @@ class RecipeShowPage extends Component {
                 created_at={new Date(created_at)}
                 user={user}
             />
-            {/* <h2>Answers: </h2>
-            <AnswerList
-            answers= {this.state.Recipe.answers}
-            deleteAnswer={this.deleteAnswer}
-            /> */}
+
+            <h3>Reviews: </h3>
+            <ReviewList
+            reviews={ this.state.recipe.reviews }
+            deleteReview={ this.deleteReview }
+            />
         </main>
     )
   }

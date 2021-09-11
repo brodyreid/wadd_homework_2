@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const RecipeDetails = ({title, story, instructions, serving_size, spicy, sweet, salty, image_url, created_at, user}) => {
+const RecipeDetails = ({title, story, instructions, serving_size, spicy, sweet, salty, image_url, created_at, user, reviews}) => {
     return (
         <div className="m-5 text-center">
           <h2>{title}</h2>

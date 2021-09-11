@@ -9,6 +9,7 @@ import RecipeIndexPage from './components/RecipeIndexPage';
 import RecipeShowPage from './components/RecipeShowPage';
 import NewRecipePage from './components/NewRecipePage';
 import AuthRoute from './components/AuthRoute';
+import HomePage from './components/HomePage';
 
 
 class App extends Component {
@@ -52,9 +53,12 @@ class App extends Component {
 
   render() {
     return (
-        <BrowserRouter>
+        <BrowserRouter style={{backgroundImage: `url("https://via.placeholder.com/500")`}}>
             <NavBar currentUser={this.state.user} onSignOut={this.onSignOut}/> 
             <Switch>
+                <Route exact path="/">
+                    <HomePage/>
+                </Route>
                 <Route exact path="/sign_in" render={(routeProps) => <SignInPage {...routeProps} onSignIn={this.getCurrentUser}/>}/>
                 {/* <Route exact path='/sign_up' render={(routeProps) => <SignUpPage {...routeProps} onSignUp={this.getCurrentUser}/>  */}
                 <Route exact path='/recipes'>

@@ -29,6 +29,7 @@ class RecipeSerializer < ActiveModel::Serializer
             :id,
             :rating,
             :body,
+            :created_at,
             :user_full_name,
         )   
         def user_full_name
