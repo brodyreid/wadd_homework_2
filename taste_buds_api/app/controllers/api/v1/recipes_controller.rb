@@ -8,7 +8,7 @@ class Api::V1::RecipesController < Api::ApplicationController
     end
 
     def show
-        render(json: @recipe)
+        render(json: @recipe, each_serializer: RecipeSerializer)
     end
 
     def create

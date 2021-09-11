@@ -8,6 +8,7 @@ class RecipeSerializer < ActiveModel::Serializer
         :spicy,
         :sweet,
         :salty,
+        :created_at,
         :image_url,
     )
 

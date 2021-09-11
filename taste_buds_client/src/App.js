@@ -4,6 +4,9 @@ import { User } from './requests'
 import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar';
+import SignInPage from './components/SignInPage';
+import RecipeIndexPage from './components/RecipeIndexPage';
+import RecipeShowPage from './components/RecipeShowPage';
 
 
 // function App() {
@@ -22,6 +25,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    // this.getCurrentUser()
     Session.create({
       email: 'js@winterfell.gov',
       password: 'supersecret'
@@ -56,17 +60,19 @@ class App extends Component {
         <BrowserRouter>
             <NavBar currentUser={this.state.user} onSignOut={this.onSignOut}/> 
             <Switch>
-                {/* <Route exact path="/sign_in" render={(routeProps) => <SignInPage {...routeProps} onSignIn={this.getCurrentUser}/>
-                <Route exact path='/sign_up' render={(routeProps) => <SignUpPage {...routeProps} onSignUp={this.getCurrentUser}/> 
-                <Route exact path='/questions'>
-                    <QuestionIndexPage />
+                <Route exact path="/sign_in" render={(routeProps) => <SignInPage {...routeProps} onSignIn={this.getCurrentUser}/>}/>
+                {/* <Route exact path='/sign_up' render={(routeProps) => <SignUpPage {...routeProps} onSignUp={this.getCurrentUser}/>  */}
+                <Route exact path='/recipes'>
+                    <RecipeIndexPage />
                 </Route>
+                <Route path='/recipes/:id' component={RecipeShowPage}></Route>
+
+                {/*
                 <AuthRoute
                     isAuthenticated={!!this.state.user}
                     exact path='/questions/new'
                     component={NewQuestionPage}
                 />
-                <Route path='/questions/:id' component={QuestionShowPage}></Route>
                 <Route component={NotFoundPage} /> */}
             </Switch>
         </BrowserRouter>
